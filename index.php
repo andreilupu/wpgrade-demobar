@@ -5,15 +5,15 @@ include_once('selector/wpGradeThemeSelect.php');
 global $selector;
 $selector = new wpGradeThemeSelect();
 
-
-
 if ( isset(  $_GET['theme'] ) && !empty( $_GET['theme'] ) ) :
 
     require_once('single_demo.php');
     die();
 
 else :
-
+    header('Location: '. BASE_PATH . '?theme=kaleidoscope');
+    die('A gallery is comming soon!');
+/*
 $categories = $selector->get_items(); ?>
 
     <head>
@@ -44,7 +44,7 @@ $categories = $selector->get_items(); ?>
 
                                 foreach ($theme_array["items"] as $i => $theme) :
 
-                                    echo '<li class="li-item"><a href="?theme='.$theme["id"].'" rel="' . $theme['url'] . ',' . $theme['themeforest'] . '"><img class="item-preview" src="'.$theme["preview"].'">' . ucfirst($theme['name']) . '</a></li>';
+                                    echo '<li class="li-item"><a href="?theme='.$theme["id"].'" rel="' . $theme['url'] . ',' . $theme['themeforest'] . '"><img class="item-preview" src="'.$theme["preview_img"].'">' . ucfirst($theme['name']) . '</a></li>';
 
                                 endforeach;
 
@@ -61,9 +61,30 @@ $categories = $selector->get_items(); ?>
         </div>
         <section>
             <div id="wrapper">
-                <iframe id="iframe" src="<?php echo $current_theme_url; ?>" frameborder="0" width="100%"></iframe>
+                <div id="gallery">
+                    <ul>
+                        <?php
+
+                        // @TODO create a gallery later
+
+
+//                        foreach ( $categories as $key => $theme_array) {
+//                            echo '<li><ul class="gallery_category">';
+//                            echo '<li class="li-head">'.$theme_array["cat_name"].'</li>';
+//
+//                            foreach ($theme_array["items"] as $i => $theme) :
+//
+//                                echo '<li class="gallery_item"><a href="?theme='.$theme["id"].'" rel="' . $theme['url'] . ',' . $theme['themeforest'] . '"><img class="item-preview" src="'.$theme["preview_img"].'">' . ucfirst($theme['name']) . '</a></li>';
+//
+//                            endforeach;
+//
+//                            echo '</ul></li>';
+//                        }
+                        ?>
+                    </ul>
+                </div>
             </div>
         </section>
     </body>
     </html>
-<?php endif; ?>
+<?php */ endif; ?>

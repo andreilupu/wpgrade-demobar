@@ -1,73 +1,78 @@
 <?php
 
+define('BASE_PATH', 'http://vps5.cgwizz.com/themeselector/' );
+define('IMAGES_PATH', BASE_PATH. 'selector/images/previews/' );
+
 class wpGradeThemeSelect {
 
     protected $items;
     protected $categories;
-    protected $images_path;
+
 
     public function __construct() {
-        $this->images_path = 'http://vps5.cgwizz.com/themeselector/selector/images/previews/';
+        //$this->images_path = 'http://vps5.cgwizz.com/themeselector/selector/images/previews/';
     }
 
     public function get_items() {
 
         $this->items = array(
-            array(
-                "cat_name" => "Wordpress Themes",
-                "items" => array (
-                    array (
-                        "id" => "kaleidoscope",
-                        "name" => "Kaleidoscope",
-                        "url" => "http://pixelgrade.com/demos/kaleidoscope",
-                        "themeforest" => "http://themeforest.net/item/bliv-responsive-minimal-wordpress-theme/4141443",
-                        "preview_img" => 'kaleidoscope.png',
-                        "theme_options" => array(
-                            "color" => array(
-                                "option_name" => "Color",
-                                "option_value" => array("color1" => "Orange", "color2" => "Green", "color3" => "Black"),
-                                "option_description" => "Choose a color:",
-                            ),
-                            "font" => array(
-                                "option_name" => "Font",
-                                "option_value" => array("font1" => "Default", "font2" => "Weird", "font3" => "Test"),
-                                "option_description" => "Choose a font style:",
-                            )
-                        )
+            "kaleidoscope" => array (
+                "id" => "kaleidoscope",
+                "name" => "Kaleidoscope",
+                "category" => "wordpress themes",
+                "url" => "http://pixelgrade.com/demos/kaleidoscope",
+                "themeforest" => "http://themeforest.net/item/bliv-responsive-minimal-wordpress-theme/4141443",
+                "preview_img" => 'kaleidoscope.png',
+                "theme_options" => array(
+                    "color" => array(
+                        "option_name" => "Color",
+                        "option_value" => array("color1" => "Orange", "color2" => "Green", "color3" => "Black"),
+                        "option_description" => "Choose a color:",
                     ),
-                    array (
-                        "id" => "bliv",
-                        "name" => "Bliv",
-                        "url" => "http://pixelgrade.com/demos/bliv",
-                        "themeforest" => "http://themeforest.net/item/bliv-responsive-minimal-wordpress-theme/4141443",
-                        "preview_img" => 'bliv.png'
+                    "font" => array(
+                        "option_name" => "Font",
+                        "option_value" => array("font1" => "Default", "font2" => "Weird", "font3" => "Test"),
+                        "option_description" => "Choose a font style:",
                     )
                 )
             ),
-            array(
-                "cat_name" => "Admin Templates",
-                "items" => array (
-                    array(
-                        "id" => "start",
-                        "name" => "Start",
-                        "url" => "http://pixelgrade.com/demos/start-1.4/index.html",
-                        "themeforest" => "http://themeforest.net/item/bird-responsive-web-app-admin-template/3249981",
-                        "preview_img" => 'start.png'
-                    ),
-                    array (
-                        "id" => "bird",
-                        "name" => "Bird",
-                        "url" => "http://cgwizz.com/bird/template/index.html",
-                        "themeforest" => "http://themeforest.net/item/bird-responsive-web-app-admin-template/3249981",
-                        "preview_img" => 'bird.png'
-                    )
-                )
+            "bliv" => array (
+                "id" => "bliv",
+                "name" => "Bliv",
+                "category" => "wordpress themes",
+                "url" => "http://pixelgrade.com/demos/bliv",
+                "themeforest" => "http://themeforest.net/item/bliv-responsive-minimal-wordpress-theme/4141443",
+                "preview_img" => 'bliv.png'
+            ),
+            "start" => array(
+                "id" => "start",
+                "name" => "Start",
+                "category" => "admin templates",
+                "url" => "http://pixelgrade.com/demos/start-1.4/index.html",
+                "themeforest" => "http://themeforest.net/item/bird-responsive-web-app-admin-template/3249981",
+                "preview_img" => 'start.png'
+            ),
+            "bird" => array (
+                "id" => "bird",
+                "name" => "Bird",
+                "category" => "admin templates",
+                "url" => "http://cgwizz.com/bird/template/index.html",
+                "themeforest" => "http://themeforest.net/item/bird-responsive-web-app-admin-template/3249981",
+                "preview_img" => 'bird.png'
             )
         );
 
         return $this->items;
     }
 
+    public function get_theme( $theme ){
+        $items = $this->get_items();
+
+        if ( array_key_exists($theme, $items) ) {
+            return $items[$theme];
+        }
+        return false;
+    }
 
     public function is_firefox() {
         $agent = '';
