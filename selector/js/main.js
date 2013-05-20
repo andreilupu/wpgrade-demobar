@@ -50,13 +50,7 @@
             theme_list_open = false;
 
             return false;
-
         });
-
-        //Bad Practice
-        // $('.li-item a').hover(function(){
-        //     $(this).children('img.item-preview').toggle(444);
-        // });
 
         /*
          * Theme Options
@@ -66,8 +60,7 @@
             sessionValues = JSON.parse(sessionStorage.getItem("wpgrade_options")),
             theme_options = $('#theme_options');
 
-        // Create an array with all values so latter we can toogle through them
-
+        // Create an array with all values so latter we can toggle through them
         theme_options.find(".theme_option").each(function(i,e){
 
             var thisName = $(this).data("name");

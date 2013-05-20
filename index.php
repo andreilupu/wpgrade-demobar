@@ -8,7 +8,7 @@ $selector = new wpGradeThemeSelect();
 
 
 if ( isset(  $_GET['theme'] ) && !empty( $_GET['theme'] ) ) :
-
+    echo 'theeme';
     require_once('single_demo.php');
     die();
 

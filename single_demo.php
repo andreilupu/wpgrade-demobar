@@ -19,14 +19,9 @@
         endforeach;
     }
 
-    if ($theme_found == false) :
-        $theme_array = $categories[0]["items"];
-        $current_theme_name = $theme_array[0]['name'];
-        $current_theme_url = $theme_array[0]['url'];
-        $current_theme_purchase_url = $theme_array[0]['themeforest'];
-        $current_theme_options = $theme_array["theme_options"];
-
-    endif; ?>
+    if ($theme_found == false) {
+        die("This theme does not exists!");
+    } ?>
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -62,15 +57,15 @@
 
                             <?php foreach ( $current_theme_options as $key => $option ) { ?>
 
-                                <li class="theme_option" data-name="<?php echo $option['option_name'] ?>">
+                                <li class="theme_option" data-name="<?php echo $option['name'] ?>">
 
                                     <ul class="category" >
                                         <li class="li-head">
 
-                                            <?php echo $option['option_name'] ?>
+                                            <?php echo $option['name'] ?>
 
                                         </li>
-                                        <?php foreach ($option["option_value"] as $i => $value ) { ?>
+                                        <?php foreach ($option["value"] as $i => $value ) { ?>
                                             <li class="li-item" data-value="<?php echo $i; ?>">
                                                 <a href="#">
                                                     <?php echo $value ?>
