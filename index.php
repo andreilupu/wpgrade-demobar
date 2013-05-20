@@ -10,7 +10,7 @@ if ( isset(  $_GET['theme'] ) && !empty( $_GET['theme'] ) ) :
     die();
 
 else :
-    header('Location: '. BASE_PATH . '?theme=kaleidoscope');
+    header('Location: '. BASE_PATH . '?theme=senna');
     die('A gallery is comming soon!');
 /*
 $categories = $selector->get_items(); ?>

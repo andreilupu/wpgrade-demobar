@@ -4,6 +4,8 @@
 
     $(document).ready(function () {
 
+        $('.colorpicker').ColorPicker();
+
         function fixHeight () {
 
             var headerHeight = $("#switcher").height();
@@ -18,7 +20,7 @@
 
         }).resize();
 
-        $(".parent-menu-item").hover( function () {
+        $(".parent-menu-item").click( function () {
 
             var dropdown = $(this).find(".sub-menu");
 
@@ -80,7 +82,8 @@
         theme_options.find('.theme_option').on('click', "li.li-item", function(){
 
             var iframe_html = $("#iframe").contents().find("html"),
-                newclass = $(this).data("value"),
+                value = $(this).data("value"),
+                type = $(this).data("type"),
                 option = $(this).parents("li.theme_option").data("name");
 
             if ( sessionValues == undefined ) {
@@ -93,9 +96,14 @@
                 iframe_html.removeClass( e );
             });
 
-            iframe_html.addClass( newclass );
+            if ( type == "class" ) {
+                iframe_html.addClass( value );
+            }
+
             // set this up in session storage
-            sessionValues[option] = newclass;
+            sessionValues[option] = {};
+            sessionValues[option]["type"] = type;
+            sessionValues[option]["value"] = value;
 
             JSONsessionValues = JSON.stringify(sessionValues);
 
@@ -109,6 +117,9 @@
             if ( values ) {
                 $.each(values, function(i,e){
                     // remove all the values for this option
+
+                    console.log(e);
+
                     $.each(theme_values[i].values, function(ii,ee){
                         iframe_html.removeClass( ee );
                     });

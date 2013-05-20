@@ -1,12 +1,9 @@
 <?php
     global $selector;
-
     $items = $selector->get_items();
-
     $theme = $selector->get_theme( $_GET['theme'] );
 
     if ( ! empty( $theme ) ) {
-
         $current_theme_name = ucfirst($theme['id']);
         $current_theme_url = $theme['url'];
         $current_theme_purchase_url = $theme['themeforest'];
@@ -15,14 +12,20 @@
     } else {
         die(" Develop the theme first ");
     } ?>
-
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Pixelgrade | <?php echo $current_theme_name; ?></title>
 
+        <link rel="stylesheet" href="selector/js/colorpicker/css/colorpicker.css" type="text/css" />
+        <link rel="stylesheet" media="screen" type="text/css" href="selector/js/colorpicker/css/layout.css" />
         <link href="selector/css/styles.css" rel="stylesheet" media="all" />
         <?php $selector->load_custom_css(); ?>
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="selector/js/colorpicker/js/colorpicker.js"></script>
+        <script src="selector/js/colorpicker/js/eye.js"></script>
+        <script src="selector/js/colorpicker/js/utils.js"></script>
+        <script src="selector/js/colorpicker/js/layout.js?ver=1.0.2"></script>
+
         <script src="selector/js/app.min.js"></script>
         <script type="text/javascript" src="selector/js/main.js"></script>
 
@@ -33,8 +36,6 @@
 
         <div class="center">
             <ul>
-
-
                 <li id="theme_list" class="parent-menu-item">
                     <a id="theme_select" href="#">
                         <?php if ($theme_found == false) : echo "Select A Theme..."; else: echo $current_theme_name; endif; ?>
@@ -67,7 +68,6 @@
                         } ?>
                         </ul></li>
                     </ul>
-
                 </li>
 
                 <?php if ( $current_theme_options ) { ?>
@@ -81,9 +81,14 @@
 
                                     <ul class="category" >
                                         <li class="li-head" style="width:100%" > <?php echo $option['name'] ?> </li>
+
+                                        <?php if ( $option["type"] == "color" ) { ?>
+                                            <div class="colorpicker"></div>
+                                        <?php } ?>
                                         <?php foreach ($option["value"] as $i => $value ) { ?>
-                                            <li class="li-item" data-value="<?php echo $i; ?>">
-                                                <a href="#">
+                                            <li class="li-item" data-value="<?php echo $i; ?>" data-type="<?php echo $option['type'] ?>">
+
+                                                <a>
                                                     <?php echo $value ?>
                                                 </a>
                                                 <span class="preview <?php echo $i; ?>"></span>
