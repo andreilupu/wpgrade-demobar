@@ -25,14 +25,16 @@ class wpGradeThemeSelect {
                 "preview_img" => 'kaleidoscope.png',
                 "theme_options" => array(
                     "color" => array(
-                        "option_name" => "Color",
-                        "option_value" => array("color1" => "Orange", "color2" => "Green", "color3" => "Black"),
-                        "option_description" => "Choose a color:",
+                        "type" => "class",
+                        "name" => "Color",
+                        "value" => array("color1" => "Orange", "color2" => "Green", "color3" => "Black"),
+                        "label" => "Choose a color:",
                     ),
                     "font" => array(
-                        "option_name" => "Font",
-                        "option_value" => array("font1" => "Default", "font2" => "Weird", "font3" => "Test"),
-                        "option_description" => "Choose a font style:",
+                        "type" => "class",
+                        "name" => "Font",
+                        "value" => array("font1" => "Default", "font2" => "Weird", "font3" => "Test"),
+                        "label" => "Choose a font style:",
                     )
                 )
             ),
@@ -155,7 +157,4 @@ class wpGradeThemeSelect {
     <?php }
 
 }
-
-
-
 ?>

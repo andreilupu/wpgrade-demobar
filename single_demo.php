@@ -12,7 +12,6 @@
         $current_theme_purchase_url = $theme['themeforest'];
         $current_theme_options = $theme["theme_options"];
         $theme_found = true;
-
     } else {
         die(" Develop the theme first ");
     } ?>
@@ -89,15 +88,15 @@
 
                             <?php foreach ( $current_theme_options as $key => $option ) { ?>
 
-                                <li class="theme_option" data-name="<?php echo $option['option_name'] ?>">
+                                <li class="theme_option" data-name="<?php echo $option['name'] ?>">
 
                                     <ul class="category" >
                                         <li class="li-head">
 
-                                            <?php echo $option['option_name'] ?>
+                                            <?php echo $option['name'] ?>
 
                                         </li>
-                                        <?php foreach ($option["option_value"] as $i => $value ) { ?>
+                                        <?php foreach ($option["value"] as $i => $value ) { ?>
                                             <li class="li-item" data-value="<?php echo $i; ?>">
                                                 <a href="#">
                                                     <?php echo $value ?>

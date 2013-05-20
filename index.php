@@ -6,7 +6,6 @@ global $selector;
 $selector = new wpGradeThemeSelect();
 
 if ( isset(  $_GET['theme'] ) && !empty( $_GET['theme'] ) ) :
-
     require_once('single_demo.php');
     die();
 
