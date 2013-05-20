@@ -70,17 +70,6 @@
 
                 </li>
 
-
-                <li id="size"></li>
-
-                <li id="devices">
-                    <a href="#" class="auto"><span>Auto</span></a>
-                    <a href="#" class="tablet-portrait active"><span>Tablet Portrait</span></a>
-                    <a href="#" class="tablet-landscape"><span>Tablet Landscape</span></a>
-                    <a href="#" class="smartphone-landscape"><span>iPhone Landscape</span></a>
-                    <a href="#" class="smartphone-portrait"><span>iPhone Portrait</span></a>
-                </li>
-
                 <?php if ( $current_theme_options ) { ?>
                     <li id="theme_options" class="parent-menu-item">
                         <a>Theme Options</a>
@@ -88,20 +77,16 @@
 
                             <?php foreach ( $current_theme_options as $key => $option ) { ?>
 
-                                <li class="theme_option" data-name="<?php echo $option['name'] ?>">
+                                <li class="theme_option" data-name="<?php echo $option['name'] ?>" data-type="<?php echo $option['type'] ?>">
 
                                     <ul class="category" >
-                                        <li class="li-head">
-
-                                            <?php echo $option['name'] ?>
-
-                                        </li>
+                                        <li class="li-head" style="width:100%" > <?php echo $option['name'] ?> </li>
                                         <?php foreach ($option["value"] as $i => $value ) { ?>
                                             <li class="li-item" data-value="<?php echo $i; ?>">
                                                 <a href="#">
                                                     <?php echo $value ?>
                                                 </a>
-                                                <span class="preview <?php echo $i; ?>"</span>
+                                                <span class="preview <?php echo $i; ?>"></span>
                                             </li>
                                         <?php } ?>
                                     </ul>
@@ -112,6 +97,16 @@
                         </ul>
                     </li>
                 <?php } ?>
+
+                <li id="size"></li>
+
+                <li id="devices">
+                    <a href="#" class="auto"><span>Auto</span></a>
+                    <a href="#" class="tablet-portrait active"><span>Tablet Portrait</span></a>
+                    <a href="#" class="tablet-landscape"><span>Tablet Landscape</span></a>
+                    <a href="#" class="smartphone-landscape"><span>iPhone Landscape</span></a>
+                    <a href="#" class="smartphone-portrait"><span>iPhone Portrait</span></a>
+                </li>
 
                 <li class="purchase" rel="<?php echo $current_theme_purchase_url; ?>"><a href="<?php echo $current_theme_purchase_url; ?>" title="Buy <?php echo $current_theme_name; ?>">$</a></li>
                 <li class="remove_frame" rel="<?php echo $current_theme_url; ?>"><a href="<?php echo $current_theme_url; ?>" title="Remove Frame" >X</a></li>

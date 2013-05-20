@@ -57,7 +57,8 @@
          */
 
         var theme_values= [],
-            sessionValues = JSON.parse(sessionStorage.getItem("wpgrade_options")),
+            current_theme = getUrlVars()["theme"],
+            sessionValues = JSON.parse( sessionStorage.getItem("wpgrade_"+current_theme+"_options") ),
             theme_options = $('#theme_options');
 
         // Create an array with all values so latter we can toggle through them
@@ -82,8 +83,12 @@
                 newclass = $(this).data("value"),
                 option = $(this).parents("li.theme_option").data("name");
 
-            // remove all the values for this option
+            if ( sessionValues == undefined ) {
+                // fix when the session is empty
+                sessionValues = {};
+            }
 
+            // remove all the values for this option
             $.each(theme_values[option].values, function(i,e){
                 iframe_html.removeClass( e );
             });
@@ -91,15 +96,22 @@
             iframe_html.addClass( newclass );
             // set this up in session storage
             sessionValues[option] = newclass;
-            sessionStorage.setItem("wpgrade_options", JSON.stringify(sessionValues));
+
+            JSONsessionValues = JSON.stringify(sessionValues);
+
+            sessionStorage.setItem("wpgrade_"+current_theme+"_options", JSONsessionValues);
         });
 
         $('iframe#iframe').load(function() {
             var iframe_html = $("#iframe").contents().find("html"),
-                values = JSON.parse(sessionStorage.getItem("wpgrade_options"));
+                values = JSON.parse(sessionStorage.getItem("wpgrade_"+current_theme+"_options"));
 
             if ( values ) {
                 $.each(values, function(i,e){
+                    // remove all the values for this option
+                    $.each(theme_values[i].values, function(ii,ee){
+                        iframe_html.removeClass( ee );
+                    });
                     iframe_html.addClass( e );
                 });
             }
@@ -107,3 +119,16 @@
     });
 
 })(jQuery);
+
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}

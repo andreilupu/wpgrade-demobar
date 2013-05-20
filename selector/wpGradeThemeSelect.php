@@ -16,24 +16,59 @@ class wpGradeThemeSelect {
     public function get_items() {
 
         $this->items = array(
+            "senna" => array(
+                "id" => "senna",
+                "name" => "Senna",
+                "category" => "wordpress themes",
+                "url" => "http://vps5.cgwizz.com/senna",
+                "themeforest" => "http://themeforest.net/item/senna-responsive-portfolio-blog-wordpress-theme/4609270?WT",
+                "preview_img" => 'senna.png',
+                "theme_options" => array(
+                    "color" => array(
+                        "type" => "color",
+                        "Name" => "Color",
+                    ),
+                )
+            ),
             "kaleidoscope" => array (
                 "id" => "kaleidoscope",
                 "name" => "Kaleidoscope",
                 "category" => "wordpress themes",
-                "url" => "http://pixelgrade.com/demos/kaleidoscope",
+                "url" => "http://vps5.cgwizz.com/kaleidoscope",
                 "themeforest" => "http://themeforest.net/item/bliv-responsive-minimal-wordpress-theme/4141443",
                 "preview_img" => 'kaleidoscope.png',
                 "theme_options" => array(
                     "color" => array(
                         "type" => "class",
                         "name" => "Color",
-                        "value" => array("color1" => "Orange", "color2" => "Green", "color3" => "Black"),
+                        "value" => array(
+                            'color1' => "Color 1",
+                            'color2' => "Color 2",
+                            'color3' => "Color 3",
+                            'color4' => "Color 4",
+                            'color5' => "Color 5",
+                            'color6' => "Color 6",
+                            'color7' => "Color 7",
+                            'color8' => "Color 8",
+                            'color9' => "Color 9",
+                            'color10' => "Color 10",
+                            'color11' => "Color 11",
+                            'color12' => "Color 12",
+                            'color13' => "Color 13"
+                        ),
                         "label" => "Choose a color:",
                     ),
                     "font" => array(
                         "type" => "class",
                         "name" => "Font",
-                        "value" => array("font1" => "Default", "font2" => "Weird", "font3" => "Test"),
+                        "value" => array(
+                            'font1' => "Modern Style",
+                            'font2' => "Regal Style",
+                            'font3' => "Industrial Style",
+                            'font4' => "Bold Style",
+                            'font5' => "Contemparary Style",
+                            'font6' => "Fun Style",
+                        ),
                         "label" => "Choose a font style:",
                     )
                 )
